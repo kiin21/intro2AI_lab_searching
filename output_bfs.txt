@@ -1,0 +1,18 @@
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+x   x       x       x          x  x   x
+x   x   x   x       x      x   x  x***P
+x   x   xx xx       x          x  x*  x
+x   x       xxx xxxxx   xxxx   x****  x
+x x    xx  xxxx xxx x     x   xx*   x x
+x               xx     x   x   x*  x  x
+x      x        x      x   x   x*  x  x
+x   x  x        x      x   x   x*  x  x
+x   x    xxxx   x  x           x*  x  x
+x xxxxx x       x  x   x    xxxx*  x  x
+x        ****** x      x   x   x*     x
+xxxxxxxxx* x x******  x     x ***     x
+xG******** x x  x x**        x*       x
+xxxxx x  x x x     x***********       x
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Path cost: 54
