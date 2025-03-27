@@ -19,3 +19,8 @@ venv\Scripts\Activate.ps1 #Powershell
 ```bash
 pip3 install -r requirements.txt #or: pip install -r requirements.txt
 ```
+
+## 4. Run
+```bash
+python3 game_engine.py #or python game_engine.py
+```
