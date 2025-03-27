@@ -10,9 +10,9 @@ x   x  x        x      x   x   x*  x  x
 x   x    xxxx   x  x           x*  x  x
 x xxxxx x       x  x   x    xxxx*  x  x
 x        *******x      x   x   x*     x
-xxxxxxxxx* x x *******x     x ***     x
-xG******** x x  x x  ********x*       x
-xxxxx x  x x x     x        ***       x
+xxxxxxxxx* x x********x     x ***     x
+xG******** x x  x x**********x*       x
+xxxxx x  x x x     x***********       x
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 Path cost: 54

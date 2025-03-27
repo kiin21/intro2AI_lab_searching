@@ -30,9 +30,9 @@ def read_maze_from_file(file_path: str) -> Optional[Tuple[List[List[str]], Tuple
             elif maze[i][j] == 'G': # goal point
                 goal = (i, j)
 
-    print_maze(maze)
-    print(f"Start: {start}")
-    print(f"Goal: {goal}")
+    # print_maze(maze)
+    # print(f"Start: {start}")
+    # print(f"Goal: {goal}")
     return (maze, start, goal)
 
 def print_maze(maze):

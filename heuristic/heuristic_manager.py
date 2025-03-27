@@ -10,5 +10,5 @@ class HeuristicManager:
             "manhattan": manhattan
         }
 
-    def get_heuristic(self, name: str) -> Optional[Callable[[Tuple[int, int], Tuple[int, int]], int]]:
-        return self.heuristics.get(name.lower(), None)  # return none if not found
+    def get_heuristic(self) -> Optional[Callable[[Tuple[int, int], Tuple[int, int]], int]]:
+        return self.heuristics.get(self.name.lower(), None)  # return none if not found
