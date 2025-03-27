@@ -42,7 +42,6 @@ if __name__ == "__main__":
 
     # game = GameEngine("astar_ghost", maze, start, goal)
 
-
     path = game.run()
 
     if path is None:
