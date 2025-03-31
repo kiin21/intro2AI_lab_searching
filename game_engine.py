@@ -50,7 +50,9 @@ class GameEngine:
             print("No path found")
             return None
 
+        # start game
         pygame.init()
+        over_font = pygame.font.Font('freesansbold.ttf', 32)
 
         # Initialize clock
         clock = pygame.time.Clock()
@@ -58,7 +60,6 @@ class GameEngine:
         # Initialize screen
         background = pygame.image.load('./assets/background.png')
         screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-        pygame.display.set_caption("Maze Pathfinding")
 
         MAZE_WIDTH, MAZE_HEIGHT = len(self.maze[0]) * TILE_SZ, len(self.maze) * TILE_SZ
         DELTA_X = (SCREEN_WIDTH - MAZE_WIDTH) / 2
@@ -107,14 +108,35 @@ class GameEngine:
             # Advance the animation
             if current_path_index < len(path_to_animate):
                 current_path_index += 1
+            else:
+                # Create a blurred background effect
+                blurred_bg = pygame.Surface(screen.get_size(), pygame.SRCALPHA)
+                blurred_bg.blit(screen, (0, 0))
+
+                # Apply blur effect: scale down & up
+                small = pygame.transform.scale(blurred_bg, (SCREEN_WIDTH // 10, SCREEN_HEIGHT // 10))
+                blurred_bg = pygame.transform.scale(small, (SCREEN_WIDTH, SCREEN_HEIGHT))
+
+                # Darken the background
+                dark_overlay = pygame.Surface(screen.get_size(), pygame.SRCALPHA)
+                dark_overlay.fill((0, 0, 0, 180))  # RGBA (black with transparency)
+
+                # Display the blurred background
+                screen.blit(blurred_bg, (0, 0))
+                screen.blit(dark_overlay, (0, 0))
+
+                # Display "GAME OVER" text
+                over_text = over_font.render(f"Path cost: {len(path)}", True, (255, 255, 255))
+                text_rect = over_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+                screen.blit(over_text, text_rect)
 
             pygame.display.update()
             clock.tick(FPS)
 
+
+
         pygame.quit()
 
-    # def game_over_text(self):
-    #     over_text = over_font.render("GAME OVER", True, (255, 255, 255))
-    #     screen.blit(over_text, (200, 250))
+
 
 
