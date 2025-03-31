@@ -23,7 +23,7 @@ def read_maze_from_file(file_path: str) -> Optional[tuple[list[list[str]], tuple
         print(f"Error reading file: {e}")
         return None
 
-    print(maze)
+    # print(maze)
     for i in range(len(maze)):
         for j in range(len(maze[i])):
             if maze[i][j] == 'G':  # start point

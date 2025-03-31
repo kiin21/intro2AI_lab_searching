@@ -1,10 +1,10 @@
 from collections import deque
 from typing import Optional, List, Tuple, Dict
 
-from plugins.ghost_ai_base import GhostAIBase
+from plugins.ghost_base import GhostBase
 
 
-class bfsGhost(GhostAIBase):
+class bfsGhost(GhostBase):
     def move(self, game_state) -> Optional[List[Tuple[Tuple[int, int], str]]]:
         start: Tuple[int, int] = game_state["ghost_position"]
         goal: Tuple[int, int] = game_state["player_position"]

@@ -50,7 +50,7 @@ class GameEngine:
 
     def run(self):
         path = self.ghost_ai.move_ghost(self.game_state)
-
+        print(path)
         if path is None:
             print("No path found")
             return None
@@ -83,6 +83,10 @@ class GameEngine:
         # Pre-render the maze to a surface
         maze_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
         maze_surface.blit(background, (0, 0))
+
+
+        for row in self.maze:
+            print(''.join(row))
 
         # Draw the static maze elements (walls, goal, player)
         for row_id, row in enumerate(self.maze):
