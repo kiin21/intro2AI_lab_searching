@@ -3,6 +3,11 @@ import pygame
 from read_input import read_maze_from_file
 from game_engine import GameEngine
 
+INPUT_PATH = 'input.txt'
+HEURISTIC_NAME = 'manhattan'
+# ALGO_NAME = 'astar_ghost'
+ALGO_NAME = 'bfs_ghost'
+
 if __name__ == "__main__":
     pygame.init()
 
@@ -26,14 +31,14 @@ if __name__ == "__main__":
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Maze Pathfinding")
 
-    maze, start, goal = read_maze_from_file("input.txt")
+    maze, start, goal = read_maze_from_file(INPUT_PATH)
 
     MAZE_WIDTH, MAZE_HEIGHT = len(maze[0]) * TILE_SZ, len(maze) * TILE_SZ
     DELTA_X = (SCREEN_WIDTH - MAZE_WIDTH) / 2
     DELTA_Y = (SCREEN_HEIGHT - MAZE_HEIGHT) / 2
 
-    for algo in ['astar_ghost']:
-        game = GameEngine(algo, maze, start, goal, 'manhattan')
+    for algo in [ALGO_NAME]:
+        game = GameEngine(algo, maze, start, goal, HEURISTIC_NAME)
         path: list[tuple[tuple[int, int], str]] = game.run()
 
         if path is None:
@@ -41,14 +46,13 @@ if __name__ == "__main__":
             exit(1)
 
         print("Path found")
+        print(path)
         # Mark path cells in the maze
         for move in path:
             maze[move[0][0]][move[0][1]] = '*'
 
-        maze[game.game_state["ghost_position"][0]
-        ][game.game_state["ghost_position"][1]] = 'G'
-        maze[game.game_state["player_position"][0]
-        ][game.game_state["player_position"][1]] = 'P'
+        maze[game.game_state["ghost_position"][0]][game.game_state["ghost_position"][1]] = 'G'
+        maze[game.game_state["player_position"][0]][game.game_state["player_position"][1]] = 'P'
 
     path_to_animate = path[1:]  # Exclude the starting point
     current_path_index = 0
