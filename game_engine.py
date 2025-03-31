@@ -5,12 +5,12 @@ from read_input import read_maze_from_file
 
 class GameEngine:
     def __init__(
-        self,
-        name: str,
-        maze: list[list[str]],
-        start: tuple[int, int],
-        goal: tuple[int, int],
-        heuristic_name: str = "Euclidean"
+            self,
+            name: str,
+            maze: list[list[str]],
+            start: tuple[int, int],
+            goal: tuple[int, int],
+            heuristic_name: str = "Euclidean"
     ):
         self.ghost_ai = GhostManager(name)
         self.game_state = {
@@ -36,23 +36,19 @@ class GameEngine:
 
         return path
 
+
 if __name__ == "__main__":
     maze, start, goal = read_maze_from_file("input.txt")
 
     # game = GameEngine("bfs_ghost", maze, start, goal)
 
-
     game = GameEngine("astar_ghost", maze, start, goal)
 
     path = game.run()
 
-
-
     if path is None:
         print("No path found")
         exit(1)
-
-
 
     print("Path found:")
     # print(path)
@@ -61,9 +57,9 @@ if __name__ == "__main__":
         maze[move[0][0]][move[0][1]] = '*'
 
     maze[game.game_state["ghost_position"][0]
-         ][game.game_state["ghost_position"][1]] = 'G'
+    ][game.game_state["ghost_position"][1]] = 'G'
     maze[game.game_state["player_position"][0]
-         ][game.game_state["player_position"][1]] = 'P'
+    ][game.game_state["player_position"][1]] = 'P'
 
     # with open("output_bfs.txt", "w") as f:
     with open("output_astar.txt", "w") as f:

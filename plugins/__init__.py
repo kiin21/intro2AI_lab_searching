@@ -1,5 +1,6 @@
-from plugins.bfs_ghost import bfsGhost
 from plugins.astar_ghost import astarGhost
+from plugins.bfs_ghost import bfsGhost
+
 
 class GhostAIManager:
     def __init__(self):

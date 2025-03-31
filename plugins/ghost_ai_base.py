@@ -1,5 +1,6 @@
-from typing import List, Tuple, Optional
 from abc import ABC, abstractmethod
+from typing import List, Tuple, Optional
+
 
 class GhostAIBase(ABC):
     @abstractmethod

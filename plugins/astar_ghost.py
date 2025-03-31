@@ -1,6 +1,7 @@
-from plugins.ghost_ai_base import GhostAIBase
-from typing import Optional, List, Tuple, Dict
 import heapq
+from typing import Optional, List, Tuple, Dict
+
+from plugins.ghost_ai_base import GhostAIBase
 
 
 class astarGhost(GhostAIBase):
@@ -48,7 +49,7 @@ class astarGhost(GhostAIBase):
                 if new_cost < cost_so_far.get(neighbor, float("inf")):
                     cost_so_far[neighbor] = new_cost
                     priority = new_cost + \
-                        game_state["heuristic"](neighbor, goal)
+                               game_state["heuristic"](neighbor, goal)
                     heapq.heappush(frontier, (priority, neighbor))
 
                     if neighbor[0] == position[0]:

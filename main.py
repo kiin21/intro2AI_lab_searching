@@ -1,7 +1,7 @@
 import pygame
 
-from read_input import read_maze_from_file
 from game_engine import GameEngine
+from read_input import read_maze_from_file
 
 INPUT_PATH = 'input.txt'
 HEURISTIC_NAME = 'manhattan'
