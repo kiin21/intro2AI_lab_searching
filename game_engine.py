@@ -2,6 +2,11 @@ from ghost_manager import GhostManager
 from heuristic.heuristic_manager import HeuristicManager
 import pygame
 
+# Input config
+WALL_ANNOTATION = 'x'
+START_ANNOTATION = 'G'
+GOAL_ANNOTATION = 'P'
+
 # Constants
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
@@ -39,7 +44,7 @@ class GameEngine:
         for (dx, dy) in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
             if 0 <= x + dx < len(self.maze) and 0 <= y + \
                     dy < len(self.maze[0]):
-                if self.maze[x + dx][y + dy] != 'x':
+                if self.maze[x + dx][y + dy] != WALL_ANNOTATION:
                     res.append((x + dx, y + dy))
         return res
 
@@ -69,8 +74,8 @@ class GameEngine:
         for move in path:
             self.maze[move[0][0]][move[0][1]] = '*'
 
-        self.maze[self.game_state["ghost_position"][0]][self.game_state["ghost_position"][1]] = 'G'
-        self.maze[self.game_state["player_position"][0]][self.game_state["player_position"][1]] = 'P'
+        self.maze[self.game_state["ghost_position"][0]][self.game_state["ghost_position"][1]] = START_ANNOTATION
+        self.maze[self.game_state["player_position"][0]][self.game_state["player_position"][1]] = GOAL_ANNOTATION
 
         path_to_animate = path[1:]  # Exclude the starting point
         current_path_index = 0
@@ -83,11 +88,11 @@ class GameEngine:
         for row_id, row in enumerate(self.maze):
             for col_id, cell in enumerate(row):
                 x, y = col_id * TILE_SZ + DELTA_X, row_id * TILE_SZ + DELTA_Y
-                if cell == 'x':
+                if cell == WALL_ANNOTATION:
                     pygame.draw.rect(maze_surface, WHITE, (x, y, TILE_SZ, TILE_SZ))
-                elif cell == 'G':
+                elif cell == START_ANNOTATION:
                     pygame.draw.rect(maze_surface, BLUE, (x, y, TILE_SZ, TILE_SZ))
-                elif cell == 'P':
+                elif cell == GOAL_ANNOTATION:
                     pygame.draw.rect(maze_surface, BLACK, (x, y, TILE_SZ, TILE_SZ))
 
         running = True

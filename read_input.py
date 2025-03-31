@@ -23,11 +23,12 @@ def read_maze_from_file(file_path: str) -> Optional[tuple[list[list[str]], tuple
         print(f"Error reading file: {e}")
         return None
 
+    print(maze)
     for i in range(len(maze)):
         for j in range(len(maze[i])):
-            if maze[i][j] == 'S':  # start point
+            if maze[i][j] == 'G':  # start point
                 start = (i, j)
-            elif maze[i][j] == 'G':  # goal point
+            elif maze[i][j] == 'P':  # goal point
                 goal = (i, j)
 
     # print_maze(maze)
@@ -39,3 +40,7 @@ def read_maze_from_file(file_path: str) -> Optional[tuple[list[list[str]], tuple
 def print_maze(maze):
     for row in maze:
         print(''.join(row))
+
+if __name__ == "__main__":
+    maze, start, goal = read_maze_from_file("input.txt")
+    print_maze(maze)

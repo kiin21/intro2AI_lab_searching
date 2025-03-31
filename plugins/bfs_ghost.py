@@ -9,6 +9,7 @@ class bfsGhost(GhostAIBase):
         start: Tuple[int, int] = game_state["ghost_position"]
         goal: Tuple[int, int] = game_state["player_position"]
 
+
         if start == goal:
             return [((start[0], start[1]), "NOT MOVING")]
 
