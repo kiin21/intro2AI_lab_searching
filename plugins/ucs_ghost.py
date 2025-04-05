@@ -23,11 +23,12 @@ class ucsGhost(GhostBase):
                 actions: List[str] = []
                 while position != start:
                     prev, direction = traced_path[position]
-                    path.append(position)
+                    path.append(prev)
                     actions.append(direction)
                     position = prev
                 path.reverse()
                 actions.reverse()
+                print(path)
                 return list(zip(path, actions))
 
             directions = [
