@@ -6,6 +6,7 @@ class GhostAIManager:
         self.ghost_strategies = {
             "BFS": bfsGhost(),
             "A*": astarGhost(),
+            "UCS": ucsGhost(),
         }
 
     def get_ai(self, level):
