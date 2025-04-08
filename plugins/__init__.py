@@ -8,6 +8,7 @@ class GhostAIManager:
             "BFS": bfsGhost(),
             "A*": astarGhost(),
             "DFS": dfsGhost(),
+            "UCS": ucsGhost(),
         }
 
     def get_ai(self, level):
